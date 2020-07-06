@@ -3,20 +3,16 @@ import {
   initializeBlock,
   useBase,
   useRecords,
-  RecordCardList,
   Button,
   Box,
   Dialog,
   Heading,
   Text,
-  Loader,
   InputSynced,
   FormField,
   TablePickerSynced,
   FieldPickerSynced,
   useGlobalConfig,
-  CellRenderer,
-  Icon,
   SelectButtons,
   expandRecord,
   TextButton,
@@ -84,8 +80,7 @@ function AWSSetupForm({ setConfigModalOpen }) {
   );
 }
 
-function SentimentDetectionBlock() {
-  const [selectedRecord, setSelectedRecord] = useState(null);
+function AirDeskBlock() {
   const [configModalOpen, setConfigModalOpen] = useState(false);
   const globalConfig = useGlobalConfig();
   const base = useBase();
@@ -115,7 +110,6 @@ function SentimentDetectionBlock() {
         const tempText = record.getCellValue(tempFieldId);
         if (tempText && !record.getCellValue("Sentiment")) {
           detectSentiment(tempText).then((result) => {
-            console.log(typeof result.sentiment.Sentiment);
             const resSentiment = result.sentiment.Sentiment;
             table.updateRecordAsync(record.id, {
               Sentiment: {
@@ -131,11 +125,8 @@ function SentimentDetectionBlock() {
             });
           });
         }
-        console.log("printing recrod get cell tag");
-        console.log(record.getCellValue("Tags"));
-        if (tempText && !record.getCellValue("Tags")) {
-          console.log("INSIDE printing recrod get cell tag");
 
+        if (tempText && !record.getCellValue("Tags")) {
           detectTags(tempText).then((result) => {
             const tempKeyPhrases = result.tags.KeyPhrases.map((keyPhrase) =>
               keyPhrase.Text.replace("the ", "")
@@ -144,17 +135,12 @@ function SentimentDetectionBlock() {
             table.updateRecordAsync(record.id, {
               Tags: tempKeyPhrases.join(", "),
             });
-            console.log(result.tags.KeyPhrases);
           });
         }
       });
     }
-    console.log("sortValue");
-
-    console.log(sortValue);
 
     if (sortValue) {
-      console.log(sortValue);
       if (sortValue == "date")
         records.sort(
           (a, b) =>
@@ -170,10 +156,6 @@ function SentimentDetectionBlock() {
 
   return (
     <Box height="500px" border="thick" backgroundColor="lightGray1">
-      {/* <RecordCardList
-        onRecordClick={(record) => setSelectedRecord(record)}
-        records={records}
-      /> */}
       <Records
         records={records}
         setConfigModalOpen={setConfigModalOpen}
@@ -182,17 +164,6 @@ function SentimentDetectionBlock() {
         sortOptions={sortOptions}
       />
     </Box>
-  );
-}
-
-function Label({ label, value }) {
-  return (
-    <div style={{ display: "flex", alignItems: "center", marginBottom: 5 }}>
-      <Heading variant="caps" size="xsmall" style={{ margin: "0 10px 0 0" }}>
-        {label}:
-      </Heading>
-      <Text size="large">{value}</Text>
-    </div>
   );
 }
 
@@ -407,8 +378,6 @@ function Records({
             const tempSentiment = record.getCellValue("Sentiment")
               ? record.getCellValue("Sentiment").name
               : "Loading";
-
-            console.log(tempSentiment);
             return (
               <tr key={record.id} style={{ borderTop: "2px solid #ddd" }}>
                 <td>
@@ -463,13 +432,7 @@ function Records({
                   )}
                 </td>
                 <td style={{ width: "80%" }}>
-                  {
-                    /* <CellRenderer
-                    record={record}
-                    field={globalConfig.get("selectedFieldId")}
-                  /> */
-                    record.getCellValue(globalConfig.get("selectedFieldId"))
-                  }
+                  {record.getCellValue(globalConfig.get("selectedFieldId"))}
                 </td>
               </tr>
             );
@@ -480,4 +443,4 @@ function Records({
   );
 }
 
-initializeBlock(() => <SentimentDetectionBlock />);
+initializeBlock(() => <AirDeskBlock />);
