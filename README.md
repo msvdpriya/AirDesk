@@ -18,11 +18,13 @@ Airdesk analyses the sentiment of the block using AWS comprehend. By analysing t
 
 It categorises as follows:
 
-Low - The issue does not affect the user's ability to work on any project. Issues at this level include things like keyboard key markings starting to wear, personalised OS backgrounds going missing, etc.
+Low: These questions are from people who aren't active customers or leads. This includes sponsorship requests and general customer feedback that doesn't require an immediate response.
 
-Medium - The issue affects a user's ability to work on one item but not others. Issues at this level include things like Program X does not open properly, but other, unrelated work can still be done in Program Y.
+Medium: These are questions or issues that aren't blocking customers from using the product, but they do require a quick response.
 
-Critical - The issue affects a user's ability to do any work. Issues at this level include Issues at this level include mass network outages, loss of connectivity to the ISP, crash of DC, etc. 
+High: These issues prevent using the product or service effectively. They require an immediate response.
+
+Urgent: These are issues that either completely blocks the use of the product or are coming from upset customers who need their case escalated. These problems should always be your top priority.
 
 AirDesk block can also be used for the following use cases:
 - It can be used to categorize reviews as positive, negative and neutral.
