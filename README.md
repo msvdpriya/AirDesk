@@ -30,6 +30,12 @@ AirDesk block can also be used for the following use cases:
 - It can be used to categorize reviews as positive, negative and neutral.
 - It can be used to understand the shortcomings of products by getting keywords from negative reviews for the product.
 
+Note: You need AWS credentials of an IAM user who has FullAccess to AWS Comprehend service to use this block.
+
+## See the block running
+
+![airdesk](https://raw.githubusercontent.com/msvdpriya/AirDesk/master/media/airdesk.png "AirDesk")
+
 ## How we built it
 
 Once a new ticket along with this description is entered into the table, the description of the ticket is sent to aws comprehend that uses machine learning to find insights and relationships in text .
@@ -38,10 +44,6 @@ The Machine learning algorithms are used to accurately identify specific items o
 
 Based on this sentiment analysis, the ticket is categorised into low, medium or High priority and ranked and sorted accordingly in Queue.
 
-
-## See the block running
-
-![airdesk](https://raw.githubusercontent.com/msvdpriya/AirDesk/master/media/airdesk.png "AirDesk")
 
 ## Accomplishments that we're proud of
 
@@ -65,6 +67,8 @@ We learnt how easy it is to build and publish an application with Airtable and h
 
 3. From the root of your new block, run `block run`.
 
-4. Configure AWS credentials of an IAM user who has FullAccess to AWS Comprehend service.
-  a. [Create IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console)
-  b. [Create AWS Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) 
+4.For AWS Region, type a region from region column in the table at the following link [AWS Regions}(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html#Concepts.RegionsAndAvailabilityZones.Availability)
+5. Configure AWS credentials of an IAM user who has FullAccess to AWS Comprehend service.
+
+- [Create IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console)
+- [Create AWS Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) 
