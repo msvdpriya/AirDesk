@@ -51,3 +51,15 @@ We learnt how easy it is to build and publish an application with Airtable and h
 - Ability to customise priority by including a rule based system.
 - Expand usage of the block beyond service desk providers and use it to analyze sentiments from movie reviews, product reviews, app reviews etc..
 
+## How to run this block
+
+1. Create a new base
+
+2. Create a new block in your new base (see
+   [Create a new block](https://airtable.com/developers/blocks/guides/hello-world-tutorial#create-a-new-block))
+
+3. From the root of your new block, run `block run`.
+
+4. Configure AWS credentials of an IAM user who has FullAccess to AWS Comprehend service.
+  a. [Create IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console)
+  b. [Create AWS Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) 
